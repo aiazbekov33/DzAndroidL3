@@ -40,7 +40,7 @@ public class LevelActivity extends AppCompatActivity {
                 questionModel.setSecondVariant("Нет");
                 questionModel.setThirdVariant("Возможно");
                 questionModel.setFourVariant("Незнаю");
-                questionModel.setAnswer("Да");
+                questionModel.setAnswer("Незнаю");
                 Intent intent = new Intent(LevelActivity.this, GameActivity.class);
                 intent.putExtra("firstModel", questionModel);
                 startActivity(intent);
@@ -54,9 +54,9 @@ public class LevelActivity extends AppCompatActivity {
                 QuestionModel questionModel = new QuestionModel();
                 questionModel.setCurrentLevel("3 Stage");
                 questionModel.setQuestions("Начало ВМВ?");
-                questionModel.setFirstVariant("1941");
-                questionModel.setSecondVariant("1918");
-                questionModel.setThirdVariant("1980");
+                questionModel.setFirstVariant("1980");
+                questionModel.setSecondVariant("1941");
+                questionModel.setThirdVariant("1931");
                 questionModel.setFourVariant("1945");
                 questionModel.setAnswer("1941");
                 Intent intent = new Intent(LevelActivity.this, GameActivity.class);
@@ -73,8 +73,8 @@ public class LevelActivity extends AppCompatActivity {
                 questionModel.setQuestions("Сколько задач прописано?");
                 questionModel.setFirstVariant("1");
                 questionModel.setSecondVariant("2");
-                questionModel.setThirdVariant("3");
-                questionModel.setFourVariant("4");
+                questionModel.setThirdVariant("4");
+                questionModel.setFourVariant("3");
                 questionModel.setAnswer("4");
                 Intent intent = new Intent(LevelActivity.this, GameActivity.class);
                 intent.putExtra("firstModel", questionModel);

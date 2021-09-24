@@ -32,22 +32,30 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+
     private void quessAnswer() {
+        questionModel = (QuestionModel) getIntent().getSerializableExtra("firstModel");
+
+
         firstAnswer.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
-                if (answer.equals("Пятница")) {
+                if (firstAnswer.getText()==answer) {
+
                     Toast.makeText(GameActivity.this, "True", Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(GameActivity.this, "false", Toast.LENGTH_LONG).show();
                 }
             }
+
         });
 
         secondAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (answer.equals("Да")) {
+                if (secondAnswer.getText()==answer) {
                     Toast.makeText(GameActivity.this, "True", Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(GameActivity.this, "false", Toast.LENGTH_LONG).show();
@@ -60,7 +68,7 @@ public class GameActivity extends AppCompatActivity {
         thirdAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (answer.equals("1941")) {
+                if (thirdAnswer.getText()==answer) {
                     Toast.makeText(GameActivity.this, "True", Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(GameActivity.this, "false", Toast.LENGTH_LONG).show();
@@ -73,7 +81,7 @@ public class GameActivity extends AppCompatActivity {
         fourAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (answer.equals("4")) {
+                if (fourAnswer.getText()==answer) {
                     Toast.makeText(GameActivity.this, "True", Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(GameActivity.this, "false", Toast.LENGTH_LONG).show();
