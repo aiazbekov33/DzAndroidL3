@@ -104,7 +104,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void setQuestion(){
-        questionModel = (QuestionModel) getIntent().getSerializableExtra("firstModel");
+        questionModel = (QuestionModel) getIntent().getSerializableExtra("model");
         if (questionModel != null){
             currentLevel = questionModel.getCurrentLevel();
             question = questionModel.getQuestions();

@@ -1,86 +1,49 @@
 package com.example.dzandroidl3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
-public class LevelActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class LevelActivity extends AppCompatActivity implements LevelAdapter.ItemListener {
+    RecyclerView recyclerView;
+    LevelAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
+        initAdapter();
+    }
 
-        findViewById(R.id.first_lvl).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                QuestionModel questionModel = new QuestionModel();
-                questionModel.setCurrentLevel("1 Stage");
-                questionModel.setQuestions("Дата дедлайна?");
-                questionModel.setFirstVariant("Пятница");
-                questionModel.setSecondVariant("Суббота");
-                questionModel.setThirdVariant("Вчера");
-                questionModel.setFourVariant("АААА!!!");
-                questionModel.setAnswer("Пятница");
-                Intent intent = new Intent(LevelActivity.this, GameActivity.class);
-                intent.putExtra("firstModel", questionModel);
-                startActivity(intent);
-            }
-        });
+    private void initAdapter() {
+        recyclerView = findViewById(R.id.level_recycler);
+        ArrayList<QuestionModel> listModel = new ArrayList<>();
+        QuestionModel questionModel1 = new QuestionModel("1 Уровень",
+                "Зимой и летом одним цветом", "Ель", "Ель",
+                "Яйцо", "Луна", "Президент");
+        QuestionModel questionModel2 = new QuestionModel("2 Уровень",
+                "H2O что это?", "Вода", "Огонь",
+                "Пиво", "Кровь", "Вода");
+        QuestionModel questionModel3 = new QuestionModel("3 Уровень",
+                "Когда закончится форсаж?", "Никогда", "Никогда",
+                "Через год", "Через 2 года", "Через 3 года");
 
-        findViewById(R.id.second_lvl).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                QuestionModel questionModel = new QuestionModel();
-                questionModel.setCurrentLevel("2 Stage");
-                questionModel.setQuestions("Загадки закончились?");
-                questionModel.setFirstVariant("Да");
-                questionModel.setSecondVariant("Нет");
-                questionModel.setThirdVariant("Возможно");
-                questionModel.setFourVariant("Незнаю");
-                questionModel.setAnswer("Незнаю");
-                Intent intent = new Intent(LevelActivity.this, GameActivity.class);
-                intent.putExtra("firstModel", questionModel);
-                startActivity(intent);
-
-            }
-        });
-
-        findViewById(R.id.third_lvl).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                QuestionModel questionModel = new QuestionModel();
-                questionModel.setCurrentLevel("3 Stage");
-                questionModel.setQuestions("Начало ВМВ?");
-                questionModel.setFirstVariant("1980");
-                questionModel.setSecondVariant("1941");
-                questionModel.setThirdVariant("1931");
-                questionModel.setFourVariant("1945");
-                questionModel.setAnswer("1941");
-                Intent intent = new Intent(LevelActivity.this, GameActivity.class);
-                intent.putExtra("firstModel", questionModel);
-                startActivity(intent);
-
-            }
-        });
-        findViewById(R.id.four_lvl).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                QuestionModel questionModel = new QuestionModel();
-                questionModel.setCurrentLevel("4 Stage");
-                questionModel.setQuestions("Сколько задач прописано?");
-                questionModel.setFirstVariant("1");
-                questionModel.setSecondVariant("2");
-                questionModel.setThirdVariant("4");
-                questionModel.setFourVariant("3");
-                questionModel.setAnswer("4");
-                Intent intent = new Intent(LevelActivity.this, GameActivity.class);
-                intent.putExtra("firstModel", questionModel);
-                startActivity(intent);
-            }
-        });
-
+        listModel.add(questionModel1);
+        listModel.add(questionModel2);
+        listModel.add(questionModel3);
+        adapter = new LevelAdapter(listModel, this);
+        recyclerView.setAdapter(adapter);
+    }
+    @Override
+    public void onItemClick(QuestionModel model) {
+        Intent intent = new Intent(LevelActivity.this, GameActivity.class);
+        intent.putExtra("model", model);
+        startActivity(intent);
     }
 }
